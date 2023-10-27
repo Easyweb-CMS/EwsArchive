@@ -21,7 +21,7 @@ This component is designed to provide a seamless and flexible user experience fo
 	</div>
 	
 	<!-- Article-list with default selector [ews-archive-article-list] -->
-	<div ews-total-count="@Value("articleList/$count")" ews-archive-article-list>
+	<div ews-archive-article-list>
 		<!-- EASYWEB ARTICLE-LIST -->
 		<ew-template for-key="articleList" />
 	</div>
@@ -54,13 +54,19 @@ This component is designed to provide a seamless and flexible user experience fo
 ew-template: articleList
 
 <ew-list for-key="$">
-    <article ews-archive-article>
+    <article ews-archive-article ews-total-count="@Value("$parent/articleList/$count")">
 		<!-- Article Content -->
     </article>
 </ew-list>
 
 ```
 
+#### Important
+```
+Required on the article:
+
+ews-total-count="@Value("$parent/articleList/$count")"```
+```
 
 #### Init EwsArchive with Options: 
 
@@ -68,7 +74,6 @@ ew-template: articleList
 const articleList = new EwsArchive({
     fetchKey: "articles",
     baseUrl: "/"
-    totalCount: 244,
    
     on: {
         loadingChanged: function () {
@@ -90,8 +95,7 @@ const articleList = new EwsArchive({
 | Option     | Default     | Description  |
 | ---------- | ----------  | ------------ |
 | FetchKey: | Null        | **String:** The Easyweb ArticleList Key, **REQUIRED** |
-| BaseUrl:  | Null        | **String:** The BaseUrl from where the ArticleList is located, **REQUIRED** |
-| totalCount: | Null        | **Number:** Total count of items in list, needed for calculating total number of pages, **REQUIRED** |              
+| BaseUrl:  | Null        | **String:** The BaseUrl from where the ArticleList is located ie. /myfolder/, defaults to location.href|           
 | mainWrapperSelector: | `"[ews-archive-wrapper]"` | **String:** DOM-Selector of main-wrapper in which all else exists |
 | archiveSelector: | `"[ews-archive-article-list]"` | **String:** DOM-Selector of article-list in which all else exists |
 | articleSelector: | `"[ews-archive-article]"` | **String:** DOM-Selector for each item in article-list |
@@ -104,6 +108,7 @@ const articleList = new EwsArchive({
 | ...paginateNext: | `"[ews-archive-paginate-next]"` | **String:** DOM-Selector for the Paginate next trigger (if loadMode: "pagination") |
 | ...paginatePrev: | `"[ews-archive-paginate-prev]"` | **String:** DOM-Selector for the Paginate prev trigger (if loadMode: "pagination") |
 | on: { `loadingChanged`, `beforeRender`, `afterRender`, `beforeFetch` }| () => void | Object with event-hooks for custom functionality, more under "Events" |
+| restrictArchive | false | **Boolean**: Restricts searchParams to only apply to the initialized articleList. While having multiple articleLists on a page they apply to all as default |
 
 
 ## Events
@@ -171,7 +176,7 @@ EwsArchive.actionGoToPage(4);
 
 | Name | Arguments | Description |
 |------- |------- | -------| 
-| setOptions | Options{} | Sets new options to the archive which re-initializes it and unbinds/binds all necessary events |
+| setOptions | Options{} | Sets new options to the archive which re-initializes it, unbinds/binds all necessary events and fetches based on new options |
 | setSearchParams | URLSearchParams (optional) | Inject new searchParams or it re-sets based on location.search  |
 | setUrlFromParams | - | sets the URL from active searchParams, also pushes a history.state based on the new URL |
 | actionLoadMore | - | Loads more items (based on current page and pagesize) |

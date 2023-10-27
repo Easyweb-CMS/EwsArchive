@@ -1,6 +1,6 @@
 EwsArchive comes style-free, meaning there are no default css only html with javascript functionality.
 
-Requirements:
+**Requirements:**
 An Easyweb site with an ArticleViewList for listing articles
 
 #### Easyweb ArticleList Component Features:

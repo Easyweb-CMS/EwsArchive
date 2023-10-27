@@ -77,8 +77,7 @@ ews-total-count="@Value("$parent/articleList/$count")"```
 ```
 const articleList = new EwsArchive({
     fetchKey: "articles",
-    baseUrl: "/"
-   
+
     on: {
         loadingChanged: function () {
         },
@@ -124,9 +123,7 @@ EwsArchive comes with a couple of useful events you can use. Events can be set w
 ```
 const articleList = new EwsArchive({
     fetchKey: "articles",
-    baseUrl: "/"
-    totalCount: 244,
-	
+
     on: {
         loadingChanged: function () {
 	        myFunction();

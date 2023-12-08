@@ -15,7 +15,7 @@ This component is designed to provide a seamless and flexible user experience fo
 
 ### Base HTML-structure with default DOM-Selectors
 
-```
+```html
 <!-- Main wrapper with default selector [ews-archive-wrapper] -->
 <div class="article-list-wrapper" ews-archive-wrapper>
 
@@ -74,7 +74,7 @@ ews-total-count="@Value("$parent/articleList/$count")"```
 
 #### Init EwsArchive with Options: 
 
-```
+```js
 const articleList = new EwsArchive({
     fetchKey: "articles",
 
@@ -120,7 +120,7 @@ EwsArchive comes with a couple of useful events you can use. Events can be set w
 
 1. Using `on` parameter on EwsArchive initialization:
 
-```
+```js
 const articleList = new EwsArchive({
     fetchKey: "articles",
 
@@ -144,7 +144,7 @@ const articleList = new EwsArchive({
 
 2. Using `on` method after EwsArchive initialization.
 
-```
+```js
 const articleList = new EwsArchive({
 	//Options
 });
@@ -169,7 +169,7 @@ EwsArchive also comes with a few useful methods that can be used after initializ
 
 Example of usage:
 
-```
+```js
 EwsArchive.setOptions({});
 
 EwsArchive.actionGoToPage(4);

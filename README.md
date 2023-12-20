@@ -72,6 +72,36 @@ Required on the article:
 ews-total-count="@Value("$parent/articleList/$count")"```
 ```
 
+### Base CSS-Structure if needed:
+```css
+[ews-archive-wrapper] {
+    position: relative;
+
+    [ews-archive-loader] {
+        display: none;
+    }
+
+    [ews-archive-article-list] {
+        transition: opacity 0.25s;
+
+        [ews-archive-article] {
+        }
+    }
+
+    &[state="loading"] {
+        [ews-archive-article-list] {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        [ews-archive-loader] {
+            display: block;
+        }
+    }
+}
+```
+
+
 #### Init EwsArchive with Options: 
 
 ```js

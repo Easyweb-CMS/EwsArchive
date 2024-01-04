@@ -209,11 +209,13 @@ EwsArchive.actionGoToPage(4);
 |------- |------- | -------| 
 | setOptions | Options{} | Sets new options to the archive which re-initializes it, unbinds/binds all necessary events and fetches based on new options |
 | setSearchParams | URLSearchParams (optional) | Inject new searchParams or it re-sets based on location.search  |
-| setUrlFromParams | - | sets the URL from active searchParams, also pushes a history.state based on the new URL |
+| updateUrlAndFetch | AppendMode* (optional) | Updates the URL from active searchParams and fetches, also pushes a history.state based on the new URL |
 | actionLoadMore | - | Loads more items (based on current page and pagesize) |
 | actionGoToNext | - | Goes to/Fetches the next page |
 | actionGoToPrev | - | Goes to/Fetches the previous page|
 | actionGoToPage | number | Go / Fetch a specific page, if auto-/click-load it automatically fetch and renders all pages in between current and requested |
+
+*AppendMode = "prepend" | "replace" | "append";
 
 
 

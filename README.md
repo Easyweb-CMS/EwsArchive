@@ -172,19 +172,6 @@ const articleList = new EwsArchive({
 
 ```
 
-2. Using `on` method after EwsArchive initialization.
-
-```js
-const articleList = new EwsArchive({
-	//Options
-});
-
-
-articleList.on('afterRender', function () {
-
-})
-```
-
 | Name | Arguments | Description |
 |------- |------- | -------| 
 | loadingChanged | (loading: boolean) | Event will be fired as soon as loading-status changes, will switch between true/false |
